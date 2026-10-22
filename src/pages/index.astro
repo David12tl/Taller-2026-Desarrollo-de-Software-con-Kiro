@@ -1,461 +1,211 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import ParallaxSection from '../components/ParallaxSection';
+import ScrollZoomHero from '../components/ScrollZoomHero';
+import WordReveal from '../components/WordReveal';
+
+const images = {
+	hero: 'https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=2400&q=85',
+	code: 'https://images.unsplash.com/photo-1515879218367-8466d910aaa4?auto=format&fit=crop&w=2400&q=85',
+	ai: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&w=2400&q=85',
+	architecture: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=2400&q=85',
+	workflow: 'https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=2400&q=85',
+	tools: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=2400&q=85',
+	game: 'https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=2400&q=85',
+	servers: 'https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=2400&q=85',
+};
 ---
 
-<Layout title="Kiro IDE & SDD | Desarrollo de Software Inteligente con AWS">
-	<main>
-		<!-- SECCIÓN 1: HERO (100vh) -->
-		<section id="hero">
-			<!-- Fondo de imagen con overlay oscuro -->
-			<div 
-				class="section-bg-image" 
-				style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=1920&q=80');"
-			></div>
-			<div class="section-overlay"></div>
+<Layout title="Arquitectura Determinista a Escala | Taller SDD">
+	<main
+		id="presentation-track"
+		class="presentation-track"
+		aria-label="Presentación del taller sobre Spec-Driven Development"
+		tabindex="0"
+	>
+		<div class="slide" style="--slide-index: 0">
+			<ScrollZoomHero
+				client:visible
+				title="Arquitectura Determinista a Escala"
+				subtitle="El fin del Vibe Coding. Bienvenidos al Spec-Driven Development."
+				imageUrl={images.hero}
+				slideIndex={0}
+			/>
+		</div>
 
-			<div class="section-content">
-				<div class="kiro-badge">
-					<span class="kiro-badge-dot"></span>
-					AWS Bedrock & Spec-Driven Development
-				</div>
-				
-				<!-- Título principal con Icono 3D de Robot/Fantasma flotante al lado -->
-				<div class="hero-title-row">
-					<h1 id="hero-title" class="hero-title">Kiro <span>& SDD</span></h1>
-					<img 
-						src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Robot/3D/robot_3d.png" 
-						alt="Kiro AI 3D Robot" 
-						class="icon-3d hero-icon-3d" 
-					/>
-				</div>
+		<div class="slide" style="--slide-index: 1">
+			<WordReveal
+				client:visible
+				text="El 45% del código generado por IA tiene fallas de seguridad. El Vibe Coding es genial para prototipos, pero falla al escalar. Cada sesión de chat opera de forma aislada, sin memoria. El código compila, pero está desalineado del negocio."
+				imageUrl={images.code}
+				slideIndex={1}
+			/>
+		</div>
 
-				<p id="hero-subtitle" class="hero-subtitle">
-					La IDE impulsada por IA que transforma especificaciones rigurosas en código determinista de producción.
+		<div class="slide" style="--slide-index: 2">
+			<ParallaxSection
+				client:visible
+				title="Fundamentos: De LLMs a Agentes"
+				imageUrl={images.ai}
+				slideIndex={2}
+			>
+				<p>
+					Un LLM ofrece conocimiento pasivo: comprende lenguaje y responde
+					preguntas, pero por sí solo no actúa en el mundo. Un agente incorpora
+					herramientas para planificar y ejecutar tareas, interactuar con su
+					entorno e iterar hacia un objetivo.
 				</p>
-			</div>
+			</ParallaxSection>
+		</div>
 
-			<div class="hero-scroll-indicator">
-				<div class="mouse-icon">
-					<div class="mouse-wheel"></div>
-				</div>
-				<span>Desplaza para explorar</span>
-			</div>
-		</section>
+		<div class="slide" style="--slide-index: 3">
+			<WordReveal
+				client:visible
+				text="La Solución: Spec-Driven Development. La especificación es el artefacto principal. Si algo cambia, no se parchea el código; se corrige la spec y se regenera. El humano diseña el contexto, la IA acelera la ejecución."
+				imageUrl={images.architecture}
+				slideIndex={3}
+			/>
+		</div>
 
-		<!-- SECCIÓN 2: SCROLL ZOOM (100vh) -->
-		<section id="scroll-zoom">
-			<div 
-				class="section-bg-image" 
-				style="background-image: url('https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=1920&q=80');"
-			></div>
-			<div class="section-overlay"></div>
+		<div class="slide" style="--slide-index: 4">
+			<ParallaxSection
+				client:visible
+				title="El Flujo de Trabajo (SDD)"
+				imageUrl={images.workflow}
+				slideIndex={4}
+			>
+				<ol class="workflow-steps">
+					<li>Idea: expresar la intención en lenguaje natural.</li>
+					<li>Requirements (EARS): convertirla en criterios comprobables.</li>
+					<li>Design: acordar arquitectura y decisiones técnicas.</li>
+					<li>Tasks: desglosar el trabajo en pasos atómicos.</li>
+					<li>Build: implementar y revisar el diff.</li>
+					<li>Validar: ejecutar pruebas e iterar.</li>
+				</ol>
+			</ParallaxSection>
+		</div>
 
-			<div class="section-content">
-				<div class="zoom-card glass-container">
-					<!-- Icono 3D de alerta / documento roto flotando sutilmente -->
-					<img 
-						src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Warning/3D/warning_3d.png" 
-						alt="Alerta 3D Kiro" 
-						class="icon-3d zoom-icon-3d" 
-					/>
-					<span class="zoom-label">La Deuda Técnica de la IA sin Guía</span>
-					<h2 class="zoom-title">El problema real</h2>
-					<p class="zoom-description">
-						El código autogenerado sin especificaciones formales genera caos, alucinaciones arquitectónicas y miles de horas de depuración. Kiro soluciona la raíz: estructuración previa antes de la ejecución.
-					</p>
-				</div>
-			</div>
-		</section>
+		<div class="slide" style="--slide-index: 5">
+			<WordReveal
+				client:visible
+				text="Dándole superpoderes al Agente. Tools para acciones atómicas. MCP para conectar con el mundo real sin alucinar. Skills para recetas bajo demanda. Hooks para automatizar la seguridad y el linter al guardar."
+				imageUrl={images.tools}
+				slideIndex={5}
+			/>
+		</div>
 
-		<!-- SECCIÓN 3: HORIZONTAL CONTAINER (300vh de scroll) -->
-		<section id="horizontal-container">
-			<div id="horizontal-track">
-				<!-- Panel 1: Settings / Engranaje 3D -->
-				<div class="horizontal-panel">
-					<div 
-						class="panel-bg" 
-						style="background-image: url('https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=1920&q=80');"
-					></div>
-					<div class="panel-overlay"></div>
-					<div class="panel-glass-card glass-container">
-						<div class="panel-header-row">
-							<span class="panel-number">01</span>
-							<span class="panel-tag">Configuración & Settings</span>
-						</div>
-						<div class="panel-body-content">
-							<div class="panel-text-block">
-								<h3>Alineación de Entorno (Settings)</h3>
-								<p>
-									Configura el runtime, define variables de observabilidad y establece las fronteras de ejecución para los agentes Kiro en tu stack de AWS.
-								</p>
-							</div>
-							<div class="panel-icon-wrap">
-								<img 
-									src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Gear/3D/gear_3d.png" 
-									alt="Engranaje 3D Settings" 
-									class="icon-3d" 
-								/>
-							</div>
-						</div>
-						<div class="panel-footer-pills">
-							<span class="panel-pill">#EnvironmentConfig</span>
-							<span class="panel-pill">#AWSBedrock</span>
-							<span class="panel-pill">#RuntimeControl</span>
-						</div>
-					</div>
-				</div>
-
-				<!-- Panel 2: Spec / Documento 3D -->
-				<div class="horizontal-panel">
-					<div 
-						class="panel-bg" 
-						style="background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=1920&q=80');"
-					></div>
-					<div class="panel-overlay"></div>
-					<div class="panel-glass-card glass-container">
-						<div class="panel-header-row">
-							<span class="panel-number">02</span>
-							<span class="panel-tag">Especificaciones (Spec)</span>
-						</div>
-						<div class="panel-body-content">
-							<div class="panel-text-block">
-								<h3>Spec-Driven Development</h3>
-								<p>
-									Documentos vivos y contratos ejecutables que guían cada paso del desarrollo. Ningún código se crea sin validación previa contra la especificación.
-								</p>
-							</div>
-							<div class="panel-icon-wrap">
-								<img 
-									src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Page%20facing%20up/3D/page_facing_up_3d.png" 
-									alt="Documento 3D Spec" 
-									class="icon-3d" 
-								/>
-							</div>
-						</div>
-						<div class="panel-footer-pills">
-							<span class="panel-pill">#FormalSpecs</span>
-							<span class="panel-pill">#NoHallucinations</span>
-							<span class="panel-pill">#ArchitectureFirst</span>
-						</div>
-					</div>
-				</div>
-
-				<!-- Panel 3: Tasks / Código & Laptop 3D -->
-				<div class="horizontal-panel">
-					<div 
-						class="panel-bg" 
-						style="background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80');"
-					></div>
-					<div class="panel-overlay"></div>
-					<div class="panel-glass-card glass-container">
-						<div class="panel-header-row">
-							<span class="panel-number">03</span>
-							<span class="panel-tag">Ejecución & Tasks</span>
-						</div>
-						<div class="panel-body-content">
-							<div class="panel-text-block">
-								<h3>Tareas Autónomas Verificadas</h3>
-								<p>
-									Kiro divide la implementación en tareas atómicas verificables con compilación y tests automatizados antes de consolidar el commit.
-								</p>
-							</div>
-							<div class="panel-icon-wrap">
-								<img 
-									src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Laptop/3D/laptop_3d.png" 
-									alt="Código y Laptop 3D" 
-									class="icon-3d" 
-								/>
-							</div>
-						</div>
-						<div class="panel-footer-pills">
-							<span class="panel-pill">#AutonomousTasks</span>
-							<span class="panel-pill">#ZeroDefects</span>
-							<span class="panel-pill">#DeterministicOutput</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- SECCIÓN 4: TEXT EFFECTS (100vh) -->
-		<section id="text-effects">
-			<div class="section-content">
-				<div class="text-effects-header">
-					<h2>Efectos Tipográficos & Core de Kiro</h2>
-				</div>
-
-				<div class="text-effects-grid">
-					<!-- EFECTO 1: Scramble Text con color kiro-purple-light -->
-					<div class="effect-glass-card glass-container">
-						<span class="effect-label">Efecto 1 • Scramble Decode Kiro</span>
-						<div id="scramble-text" data-text="KIRO PROTOCOL: SPECIFICATION VERIFIED">
-							KIRO PROTOCOL: SPECIFICATION VERIFIED
-						</div>
-					</div>
-
-					<!-- EFECTO 2: Per Character con SplitType -->
-					<div class="effect-glass-card glass-container">
-						<span class="effect-label">Efecto 2 • Caracteres con Split-Type</span>
-						<div id="split-text">
-							Arquitectura Determinista con AWS Bedrock
-						</div>
-					</div>
-
-					<!-- EFECTO 3: Text Loop infinito alternando Specs, Hooks, Steering -->
-					<div class="effect-glass-card glass-container">
-						<span class="effect-label">Efecto 3 • Loop Infinito de Conceptos Kiro</span>
-						<div class="loop-wrapper">
-							<span class="loop-prefix">Ecosistema Kiro:</span>
-							<span id="loop-text">Specs</span>
-						</div>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		<!-- SECCIÓN 5: PARALLAX (100vh) -->
-		<section id="parallax">
-			<!-- Fondo de imagen con height 120% y top -10% para evitar bordes al aplicar yPercent: 20 -->
-			<div 
-				id="parallax-bg" 
-				style="background-image: url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80');"
-			></div>
-			<div class="parallax-overlay"></div>
-
-			<div class="parallax-card glass-container">
-				<!-- Icono 3D grande de Nube / Cloud flotando -->
-				<img 
-					src="https://raw.githubusercontent.com/microsoft/fluentui-emoji/main/assets/Cloud/3D/cloud_3d.png" 
-					alt="AWS Cloud 3D" 
-					class="icon-3d parallax-icon-3d" 
-				/>
-				<div class="kiro-badge">
-					<span class="kiro-badge-dot"></span>
-					Potencia Cloud con AWS & Kiro
-				</div>
-				<h2 class="parallax-title">Lleva tu ingeniería al siguiente nivel</h2>
-				<p class="parallax-desc">
-					Aprende a estructurar software de alta complejidad con Kiro, combinando el poder del Spec-Driven Development y la nube de AWS.
+		<div class="slide" style="--slide-index: 6">
+			<ParallaxSection
+				client:visible
+				title="Ejemplo Integrador: Flappy Ghost"
+				imageUrl={images.game}
+				slideIndex={6}
+			>
+				<p>
+					Un proyecto retro que reúne física, UI/UX y persistencia de récords.
+					Kiro actúa como arquitecto ejecutor: transforma la idea en requisitos,
+					diseño y tareas, mientras el equipo revisa cada diff antes de aceptar
+					los cambios.
 				</p>
-				<a href="#hero" class="cta-button">
-					<span>Comenzar Ahora con Kiro</span>
-					<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-						<line x1="5" y1="12" x2="19" y2="12"></line>
-						<polyline points="12 5 19 12 12 19"></polyline>
-					</svg>
-				</a>
-			</div>
-		</section>
+			</ParallaxSection>
+		</div>
+
+		<div class="slide" style="--slide-index: 7">
+			<WordReveal
+				client:visible
+				text="Seguridad Cloud: nada hardcodeado; usa Secrets Manager. Aplica mínimo privilegio en IAM y jamás Action:*. El futuro no es una IA que programa sola, sino ingenieros que amplifican su criterio."
+				imageUrl={images.servers}
+				slideIndex={7}
+				closing="Gracias por acompañarnos. Diseñemos el contexto, revisemos cada cambio y construyamos software con criterio."
+			/>
+		</div>
 	</main>
-</Layout>
 
-<script>
-	import { gsap } from 'gsap';
-	import { ScrollTrigger } from 'gsap/ScrollTrigger';
-	import SplitType from 'split-type';
+	<div class="slide-progress" aria-hidden="true">
+		<span id="scroll-progress"></span>
+	</div>
 
-	// Registro de ScrollTrigger
-	gsap.registerPlugin(ScrollTrigger);
+	<nav class="slide-controls" aria-label="Navegación de diapositivas">
+		<button id="previous-slide" type="button" aria-label="Diapositiva anterior" disabled>
+			<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+				<path d="m15 18-6-6 6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+			</svg>
+		</button>
+		<span id="slide-counter" class="slide-counter" aria-live="polite">01 / 08</span>
+		<button id="next-slide" type="button" aria-label="Siguiente diapositiva">
+			<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+				<path d="m9 18 6-6-6-6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+			</svg>
+		</button>
+	</nav>
 
-	const initAnimations = () => {
-		// Limpieza de triggers existentes para evitar duplicaciones
-		ScrollTrigger.getAll().forEach(t => t.kill());
+	<script>
+		import Lenis from 'lenis';
 
-		/* ==========================================================================
-		   A. ANIMACIÓN DE FLOTACIÓN (3D Icons)
-		   - Levitación infinita en todos los .icon-3d
-		   ========================================================================== */
-		gsap.to('.icon-3d', {
-			y: -20,
-			rotation: 2,
-			duration: 2,
-			repeat: -1,
-			yoyo: true,
-			ease: 'power1.inOut',
-			stagger: 0.2
-		});
+		const track = document.querySelector<HTMLElement>('#presentation-track');
+		const previousButton = document.querySelector<HTMLButtonElement>('#previous-slide');
+		const nextButton = document.querySelector<HTMLButtonElement>('#next-slide');
+		const counter = document.querySelector<HTMLElement>('#slide-counter');
+		const progressBar = document.querySelector<HTMLElement>('#scroll-progress');
+		const slides = track
+			? Array.from(track.querySelectorAll<HTMLElement>('.slide'))
+			: [];
+		const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const lenis = reducedMotion.matches
+			? undefined
+			: new Lenis({ autoRaf: true, lerp: 0.085, wheelMultiplier: 0.9 });
 
-		/* ==========================================================================
-		   B. SCROLL ZOOM HERO (Sección 1)
-		   - ScrollTrigger en #hero con pin: true y scrub: true
-		   - El título y el icono 3D escalan y se desvanecen (scale: 2, opacity: 0)
-		   ========================================================================== */
-		gsap.to(['#hero-title', '.hero-icon-3d'], {
-			scale: 2,
-			opacity: 0,
-			ease: 'none',
-			scrollTrigger: {
-				trigger: '#hero',
-				start: 'top top',
-				end: '+=100%',
-				pin: true,
-				scrub: true,
-			}
-		});
+		if (track && previousButton && nextButton && counter && progressBar && slides.length) {
+			const currentIndex = () =>
+				Math.max(0, Math.min(slides.length - 1, Math.round(window.scrollY / window.innerHeight)));
 
-		// Desvanecer subtítulo y badge en el scroll
-		gsap.to(['#hero-subtitle', '.kiro-badge', '.hero-scroll-indicator'], {
-			opacity: 0,
-			y: -25,
-			ease: 'none',
-			scrollTrigger: {
-				trigger: '#hero',
-				start: 'top top',
-				end: '+=50%',
-				scrub: true,
-			}
-		});
-
-		/* ==========================================================================
-		   C. SCROLL HORIZONTAL (Sección 3)
-		   - ScrollTrigger para #horizontal-container con pin: true y scrub: true
-		   - Anima #horizontal-track en el eje X (xPercent: -66.66)
-		   - end: "+=300%"
-		   ========================================================================== */
-		gsap.to('#horizontal-track', {
-			xPercent: -66.66,
-			ease: 'none',
-			scrollTrigger: {
-				trigger: '#horizontal-container',
-				start: 'top top',
-				end: '+=300%',
-				pin: true,
-				scrub: true,
-				anticipatePin: 1,
-			}
-		});
-
-		/* ==========================================================================
-		   D. PARALLAX (Sección 5)
-		   - Anima #parallax-bg con yPercent: 20 y scrub: true
-		   - Altura 120% y top: -10% configurados en CSS
-		   ========================================================================== */
-		gsap.to('#parallax-bg', {
-			yPercent: 20,
-			ease: 'none',
-			scrollTrigger: {
-				trigger: '#parallax',
-				start: 'top bottom',
-				end: 'bottom top',
-				scrub: true,
-			}
-		});
-
-		/* ==========================================================================
-		   E. TEXT EFFECTS (Sección 4)
-		   ========================================================================== */
-
-		// EFECTO 1: Scramble Text (Función JS custom que cambia letras por 1 seg)
-		const scrambleEl = document.getElementById('scramble-text');
-		if (scrambleEl) {
-			const targetString = scrambleEl.getAttribute('data-text') || scrambleEl.textContent || '';
-			const glyphs = 'ABCDEFGHJKLMNPQRSTUVWXYZ0123456789_#@&%*+=-/<>[]';
-
-			const runScramble = (el: HTMLElement, originalText: string, duration = 1000) => {
-				const startTime = performance.now();
-				const len = originalText.length;
-
-				const tick = (now: number) => {
-					const elapsed = now - startTime;
-					const progress = Math.min(elapsed / duration, 1);
-					const revealed = Math.floor(progress * len);
-
-					let output = '';
-					for (let i = 0; i < len; i++) {
-						if (i < revealed) {
-							output += originalText[i];
-						} else if (originalText[i] === ' ') {
-							output += ' ';
-						} else {
-							output += glyphs[Math.floor(Math.random() * glyphs.length)];
-						}
-					}
-
-					el.textContent = output;
-
-					if (progress < 1) {
-						requestAnimationFrame(tick);
-					} else {
-						el.textContent = originalText;
-					}
-				};
-
-				requestAnimationFrame(tick);
+			const updateControls = () => {
+				const index = currentIndex();
+				const maxScroll =
+					document.documentElement.scrollHeight - window.innerHeight;
+				previousButton.disabled = index === 0;
+				nextButton.disabled = index === slides.length - 1;
+				counter.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+				progressBar.style.transform = `scaleX(${maxScroll > 0 ? window.scrollY / maxScroll : 0})`;
 			};
 
-			ScrollTrigger.create({
-				trigger: scrambleEl,
-				start: 'top 85%',
-				onEnter: () => runScramble(scrambleEl, targetString, 1000),
-				onEnterBack: () => runScramble(scrambleEl, targetString, 1000),
+			const goToSlide = (index: number) => {
+				const boundedIndex = Math.max(0, Math.min(index, slides.length - 1));
+				const target = boundedIndex * window.innerHeight;
+
+				if (lenis) {
+					lenis.scrollTo(target, { duration: 1.15 });
+				} else {
+					window.scrollTo({ top: target, behavior: 'auto' });
+				}
+			};
+
+			previousButton.addEventListener('click', () =>
+				goToSlide(currentIndex() - 1),
+			);
+			nextButton.addEventListener('click', () =>
+				goToSlide(currentIndex() + 1),
+			);
+			window.addEventListener('scroll', updateControls, { passive: true });
+			window.addEventListener('resize', updateControls);
+			window.addEventListener('keydown', (event: KeyboardEvent) => {
+				if (event.altKey || event.ctrlKey || event.metaKey) return;
+
+				if (event.key === 'ArrowDown' || event.key === 'PageDown') {
+					event.preventDefault();
+					goToSlide(currentIndex() + 1);
+				} else if (event.key === 'ArrowUp' || event.key === 'PageUp') {
+					event.preventDefault();
+					goToSlide(currentIndex() - 1);
+				} else if (event.key === 'Home') {
+					event.preventDefault();
+					goToSlide(0);
+				} else if (event.key === 'End') {
+					event.preventDefault();
+					goToSlide(slides.length - 1);
+				}
 			});
+			updateControls();
 		}
-
-		// EFECTO 2: Per Character con SplitType
-		const splitEl = document.getElementById('split-text');
-		if (splitEl) {
-			const split = new SplitType('#split-text', { types: 'chars' });
-			if (split.chars && split.chars.length > 0) {
-				gsap.fromTo(
-					split.chars,
-					{ y: 50, opacity: 0 },
-					{
-						y: 0,
-						opacity: 1,
-						stagger: 0.05,
-						duration: 0.8,
-						ease: 'power3.out',
-						scrollTrigger: {
-							trigger: '#split-text',
-							start: 'top 85%',
-							toggleActions: 'play none none reverse',
-						}
-					}
-				);
-			}
-		}
-
-		// EFECTO 3: Text Loop (Animación infinita repeat: -1 que cambie entre "Specs", "Hooks", "Steering")
-		const loopEl = document.getElementById('loop-text');
-		if (loopEl) {
-			const words = ['Specs', 'Hooks', 'Steering'];
-			const loopTimeline = gsap.timeline({ repeat: -1 });
-
-			words.forEach((word) => {
-				loopTimeline
-					.to(loopEl, {
-						opacity: 0,
-						y: -15,
-						scale: 0.9,
-						duration: 0.35,
-						ease: 'power2.in',
-						onComplete: () => {
-							loopEl.textContent = word;
-						}
-					})
-					.to(loopEl, {
-						opacity: 1,
-						y: 0,
-						scale: 1,
-						duration: 0.45,
-						ease: 'power2.out',
-					})
-					.to({}, { duration: 1.2 }); // Mantener visible cada palabra por 1.2s
-			});
-		}
-
-		// Recalcular ScrollTrigger
-		ScrollTrigger.refresh();
-	};
-
-	// Ejecución segura en ciclo de vida del DOM
-	if (document.readyState === 'loading') {
-		document.addEventListener('DOMContentLoaded', initAnimations);
-	} else {
-		initAnimations();
-	}
-
-	window.addEventListener('load', () => {
-		ScrollTrigger.refresh();
-	});
-</script>
+	</script>
+</Layout>
